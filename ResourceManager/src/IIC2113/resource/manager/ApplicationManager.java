@@ -13,7 +13,7 @@ public class ApplicationManager implements IAppObs{
 	public void init()
 	{
 		this.persistencia = new Persistencia();
-		this.resourceManager = new ResourceManager((IUserManager)userManager);
+		this.resourceManager = new ResourceManager();
 		this.resourceManager.setAppObserver((IAppObs)this);
 		this.resourceManager.setPersistencia((IPersistencia)this.persistencia);
 		this.resourceManager.setDeviceId(device_id);
