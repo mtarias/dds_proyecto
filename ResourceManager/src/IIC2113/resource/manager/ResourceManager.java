@@ -8,7 +8,6 @@ public class ResourceManager implements IConsumptionObs{
 	private int user_id,device_id;
 	public static final String[] RESOURCES = {"CAMERA","QR"};
 	public static final String[] R1_ACTIONS = {"TAKE_PICTURE","START_RECORDING","STOP_RECORDING"};
-	private IUserManager userManager;
 	
 	public String[] getResourcesList()//para User manager
 	{
@@ -20,12 +19,6 @@ public class ResourceManager implements IConsumptionObs{
 		return resources2;
 	}
 	
-	public ResourceManager(IUserManager _userManager)
-	{
-		this.userManager = _userManager;
-		init();
-	}
-
 	public void setDeviceId(int _device_id)
 	{
 		this.device_id = _device_id;
