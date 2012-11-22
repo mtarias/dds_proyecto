@@ -59,8 +59,8 @@ public abstract class Application{
 	 * local de recursos foráneos (de otros dispositivos).
 	 * @param res Nueva lista de resources
 	 */
-	public void setForeignResources(ArrayList<IResource> res){
-		this.foreignResources = res;
+	public void setForeignResources(){
+		this.foreignResources = userMgr.getResourceList();
 	}
 
 
