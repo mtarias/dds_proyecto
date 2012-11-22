@@ -12,6 +12,8 @@ public class buscarRecurso extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.buscar_recurso_activity);
         getIntent();
+        
+        
     }
 	
 	
