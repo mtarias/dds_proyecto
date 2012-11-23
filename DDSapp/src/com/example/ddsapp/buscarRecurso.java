@@ -15,8 +15,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
+
 public class buscarRecurso extends Activity {
 
+	private MyApplication app;
+	private ArrayList<IResource> ListaRecursos;
+	private String[] ListaTipoRecurso;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,11 +29,11 @@ public class buscarRecurso extends Activity {
         setContentView(R.layout.buscar_recurso_activity);
         getIntent();
         
-        MyApplication app = new MyApplication();
+        app = new MyApplication();
         
-        ArrayList<IResource> ListaRecursos = app.getAllForeignResources();
-        //String[] ListaTipoRecurso = new String[ListaRecursos.size()];
-        String[] ListaTipoRecurso = new String[2];
+        ListaRecursos = app.getAllForeignResources();
+        //ListaTipoRecurso = new String[ListaRecursos.size()];
+        ListaTipoRecurso = new String[2];
         int j = 0;
         
         ListaTipoRecurso[0]= "Hola";
@@ -63,6 +68,8 @@ public class buscarRecurso extends Activity {
 	 private OnItemClickListener mMessageClickedHandler = new OnItemClickListener() {
 		    public void onItemClick(AdapterView parent, View v, int position, long id) {
 		       Log.v("BuscarRecurso", "Position: "+position+" id: "+id);
+		       IResource resource = ListaRecursos.get(position);
+		       app.userResource(resource);
 		    }
 		};
 
