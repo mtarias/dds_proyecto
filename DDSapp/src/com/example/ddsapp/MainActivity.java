@@ -15,7 +15,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
-	private CameraObserver co;
+	private CameraObserver co = new CameraObserver();
 	private static Context context;
 	ResourceConnector rc = new ResourceConnector();
 	

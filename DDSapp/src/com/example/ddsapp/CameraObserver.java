@@ -1,5 +1,7 @@
 package com.example.ddsapp;
 
+import android.util.Log;
+
 public class CameraObserver implements IConsumptionObs
 {
 	byte[] data;
@@ -11,6 +13,7 @@ public class CameraObserver implements IConsumptionObs
 
 	public void consumptionFinished(int i, Object o) {
 		// TODO Auto-generated method stub
+		Log.v("ConsumptionFinished", "Objeto: "+o);
 		data = (byte[]) o;
 		
 	}

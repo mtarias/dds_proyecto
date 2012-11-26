@@ -17,7 +17,8 @@ public class ResourceConnector implements IResource
 	IConsumptionObs observer = new CameraObserver();
 
 
-	void notifyAllObservers(byte[] data) {	        
+	public void notifyAllObservers(byte[] data) {	    
+		Log.v("NotifyAllObserver", "A");
 		observer.consumptionFinished(id, (Object)data);
 	}
 
@@ -35,27 +36,35 @@ public class ResourceConnector implements IResource
 	public boolean receiveAction(int i, String[] s) {		
 
 		try{
-			
-			Thread toRun = new Thread()
-		       {
-		              public void run()
-		              {
-		            	  Log.v("run","");
-		            	  Notificar();
-		              }
-		       };
-		       toRun.start();
+
+			Thread thread = new Thread()
+			{
+				@Override
+				public void run() {
+					try {
+						Log.v("run", "");
+						while(CameraActivity.getFoto()==null)
+						{
+							Notificar();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			};
+
+			thread.start();
 
 			Context context = MainActivity.getAppContext();
 			Intent intent = new Intent(context, CameraActivity.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(intent);
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 
 			/*byte[] data = CameraActivity.getFoto();
 
@@ -96,8 +105,8 @@ public class ResourceConnector implements IResource
 		Log.v("Foto", ""+foto);
 		while(foto == null)
 		{
-			Log.v("", "Esperando...");
-			foto = CameraActivity.getFoto();
+			Log.v("While", "Esperando...");
+			foto = CameraActivity.preview.getFoto();
 		}
 		notifyAllObservers(foto);
 		Log.v(":","Notifico");
