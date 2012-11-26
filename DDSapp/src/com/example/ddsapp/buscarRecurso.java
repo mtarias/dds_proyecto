@@ -29,7 +29,11 @@ public class buscarRecurso extends Activity {
         setContentView(R.layout.buscar_recurso_activity);
         getIntent();
         
+	
+        
         app = new MyApplication();
+        
+        
         
         ListaRecursos = app.getAllForeignResources();
         //ListaTipoRecurso = new String[ListaRecursos.size()];
@@ -70,6 +74,19 @@ public class buscarRecurso extends Activity {
 		       Log.v("BuscarRecurso", "Position: "+position+" id: "+id);
 		       IResource resource = ListaRecursos.get(position);
 		       app.userResource(resource);
+		       
+		      /* Object objeto = app.recieveMesagge();
+		       
+		       while(objeto == null)
+		       {
+		    	 //  objeto = app.recieveMesagge();
+		       }
+		       
+		       byte[] foto = (byte[])objeto;*/
+		       
+		       
+		 
+		       
 		    }
 		};
 

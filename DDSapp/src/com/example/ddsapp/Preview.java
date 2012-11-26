@@ -14,9 +14,9 @@ class Preview extends SurfaceView implements SurfaceHolder.Callback { // <1>
 
   SurfaceHolder mHolder;  // <2>
   public Camera camera; // <3>
-  byte[] foto;
+  static byte[] foto;
 
-  public byte[] getFoto()
+  public static byte[] getFoto()
   {
 	  return foto;
   }
@@ -36,6 +36,7 @@ class Preview extends SurfaceView implements SurfaceHolder.Callback { // <1>
     // The Surface has been created, acquire the camera and tell it where
     // to draw.
     camera = Camera.open(); // <8>
+  
     try {
       camera.setPreviewDisplay(holder);  // <9>
 

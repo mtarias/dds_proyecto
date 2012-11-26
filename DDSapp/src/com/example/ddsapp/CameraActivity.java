@@ -21,14 +21,14 @@ import android.widget.FrameLayout;
 public class CameraActivity extends Activity {
   private static final String TAG = "CameraDemo";
   private static Context context;
-  Preview preview; // <1>
+  public static Preview preview; // <1>
   Button buttonClick; // <2>
   Button boton2;
-  byte[] foto;
-  
+  private static byte[] foto;
+  private ResourceConnector rc = new ResourceConnector();
   //** Called when the activity is first created. *//*
   
-  public byte[] getFoto()
+  public static byte[] getFoto()
   {
 	  return foto;
   }
@@ -41,6 +41,8 @@ public class CameraActivity extends Activity {
     preview = new Preview(this); // <3>
     ((FrameLayout) findViewById(R.id.preview)).addView(preview); // <4>
 
+    
+    
     buttonClick = (Button) findViewById(R.id.buttonClick);
     buttonClick.setOnClickListener(new OnClickListener() {
       public void onClick(View v) { // <5>
@@ -64,6 +66,7 @@ public class CameraActivity extends Activity {
 	});
 
     Log.d(TAG, "onCreate'd");
+   
   }
 
   // Called when shutter is opened
@@ -105,6 +108,9 @@ public class CameraActivity extends Activity {
   public static Context getAppContext() {
 	  return context;
   }
+
+
   
+
 
 }

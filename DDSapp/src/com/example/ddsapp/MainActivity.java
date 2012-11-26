@@ -17,6 +17,7 @@ public class MainActivity extends Activity {
 
 	private CameraObserver co;
 	private static Context context;
+	ResourceConnector rc = new ResourceConnector();
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class MainActivity extends Activity {
     		
     		public void onClick(View v) {
     					
-    			ResourceConnector rc = new ResourceConnector();
+    			
     			
     			rc.setObserver(co);
     			String[] s = new String[2];
@@ -66,6 +67,7 @@ public class MainActivity extends Activity {
     			s[1] = "chao";
     			
     			rc.receiveAction(1, s);
+    			
     			//byte[] foto = co.getData();
     			//Bitmap bmp=BitmapFactory.decodeByteArray(foto,0,foto.length);
     	        //ImageView image= (ImageView) findViewById(R.id.imageView1);
@@ -78,6 +80,31 @@ public class MainActivity extends Activity {
     		}
     	});
         
+        Button bot5 = (Button) findViewById(R.id.button5);
+        bot5.setOnClickListener(new View.OnClickListener() {
+    		
+    		public void onClick(View v) {
+    					
+    			
+    			
+    			rc.setObserver(co);
+    			String[] s = new String[2];
+    			s[0] = "hola";
+    			s[1] = "chao";
+    			
+    			rc.receiveAction(2, s);
+    			
+    			//byte[] foto = co.getData();
+    			//Bitmap bmp=BitmapFactory.decodeByteArray(foto,0,foto.length);
+    	        //ImageView image= (ImageView) findViewById(R.id.imageView1);
+    	        //image.setImageBitmap(bmp);
+    	        //rc.cancelConsumption();
+    	        //co.consumptionFinished(1, foto);
+    			
+    		
+    			
+    		}
+    	});
         Button bot4 = (Button) findViewById(R.id.button4);
         bot4.setOnClickListener(new View.OnClickListener() {
     		
@@ -91,7 +118,8 @@ public class MainActivity extends Activity {
     				Bitmap bmp=BitmapFactory.decodeByteArray(foto,0,foto.length);
         	        ImageView image= (ImageView) findViewById(R.id.imageView1);
         	        image.setImageBitmap(bmp);
-       
+        	        rc.notifyAllObservers(foto);
+        	        Log.v("Foto", ""+foto);
     			}
     			
     		}
